@@ -1,0 +1,57 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebaseConfig";
+import { PostItemProps } from "@/types/IPost";
+
+const PostPage = () => {
+  const { id } = useParams(); // 👈 get post ID from URL
+  const [post, setPost] = useState<PostItemProps | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPost = async () => {
+      if (!id) return;
+      const docRef = doc(db, "flashblog", id as string);
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setPost({
+          id: docSnap.id,
+          ...(docSnap.data() as Omit<PostItemProps, "id">),
+        });
+      } else {
+        setPost(null);
+      }
+      setLoading(false);
+    };
+
+    fetchPost();
+  }, [id]);
+
+  const formatDate = (date: any) => {
+    if (!date) return "";
+    if (typeof date === "string") return new Date(date).toLocaleDateString();
+    if ("toDate" in date) return date.toDate().toLocaleDateString();
+    return "";
+  };
+
+  if (loading) return <p>Loading post...</p>;
+  if (!post) return <p>Post not found.</p>;
+
+  return (
+    <div className="max-w-2xl mx-auto p-6 border rounded-lg bg-white shadow-md mt-6">
+      <h1 className="text-2xl font-bold mb-4">{post.content}</h1>
+      <p className="text-gray-700">By {post.creator}</p>
+      {post.date && (
+        <p className="text-sm text-gray-500">
+          Published: {formatDate(post.date)}
+        </p>
+      )}
+    </div>
+  );
+};
+
+export default PostPage;
