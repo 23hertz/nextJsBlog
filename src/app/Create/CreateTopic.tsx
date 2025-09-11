@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { db } from "@/lib/firebaseConfig";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
-import { storage } from "@/lib/firebaseConfig"; // 👈 make sure storage is exported in firebaseConfig
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+// import { storage } from "@/lib/firebaseConfig"; // 👈 make sure storage is exported in firebaseConfig
+// import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 import Header from "../Header";
 import Link from "next/link";
