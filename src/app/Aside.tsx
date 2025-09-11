@@ -34,12 +34,27 @@ const Aside = () => {
   const randomTopics = getRandomTopics(allPosts, 5);
 
   // 🔹 Format Firestore date or string date
-  const formatDate = (date: Date) => {
+  // const formatDate = (date: Date) => {
+  //   if (!date) return "";
+  //   if (typeof date === "string") return new Date(date).toLocaleDateString();
+  //   if (date instanceof Timestamp) return date.toDate().toLocaleDateString();
+  //   return "";
+  // };
+
+  const formatDate = (date: Timestamp | string) => {
     if (!date) return "";
-    if (typeof date === "string") return new Date(date).toLocaleDateString();
-    if (date instanceof Timestamp) return date.toDate().toLocaleDateString();
+
+    if (typeof date === "string") {
+      return new Date(date).toLocaleDateString();
+    }
+
+    if (date instanceof Timestamp) {
+      return date.toDate().toLocaleDateString();
+    }
+
     return "";
   };
+
 
   return (
     <div className="bg-gray mt-8 p-4 rounded-lg shadow-lg">
@@ -64,6 +79,11 @@ const Aside = () => {
                     ? post.content.slice(0, 50) + "..."
                     : post.content}
                 </p>
+                {/* {post.date && (
+                  <p className="text-xs text-gray-500 mt-1">
+                    Date: {formatDate(post.date)}
+                  </p>
+                )} */}
                 {post.date && (
                   <p className="text-xs text-gray-500 mt-1">
                     Date: {formatDate(post.date)}

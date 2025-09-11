@@ -1,7 +1,10 @@
+import { Timestamp } from "firebase/firestore";
+
 export interface PostItemProps {
   id: string;
   subject: string;
   content: string;
   creator: string;
-  date: Date;
+  // date: Timestamp;
+  date: Timestamp | string;
 }
