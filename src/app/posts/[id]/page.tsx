@@ -31,7 +31,7 @@ const PostPage = () => {
     fetchPost();
   }, [id]);
 
-  const formatDate = (date: any) => {
+  const formatDate = (date: Date) => {
     if (!date) return "";
     if (typeof date === "string") return new Date(date).toLocaleDateString();
     if ("toDate" in date) return date.toDate().toLocaleDateString();
