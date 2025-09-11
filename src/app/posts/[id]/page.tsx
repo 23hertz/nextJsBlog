@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/lib/firebaseConfig";
 import { PostItemProps } from "@/types/IPost";
+import { Timestamp } from "firebase/firestore";
 
 const PostPage = () => {
   const { id } = useParams(); // 👈 get post ID from URL
@@ -31,10 +32,24 @@ const PostPage = () => {
     fetchPost();
   }, [id]);
 
-  const formatDate = (date: Date) => {
+  // const formatDate = (date: Date) => {
+  //   if (!date) return "";
+  //   if (typeof date === "string") return new Date(date).toLocaleDateString();
+  //   if ("toDate" in date) return date.toDate().toLocaleDateString();
+  //   return "";
+  // };
+
+  const formatDate = (date: Timestamp | string | null | undefined) => {
     if (!date) return "";
-    if (typeof date === "string") return new Date(date).toLocaleDateString();
-    if ("toDate" in date) return date.toDate().toLocaleDateString();
+
+    if (typeof date === "string") {
+      return new Date(date).toLocaleDateString();
+    }
+
+    if (date instanceof Timestamp) {
+      return date.toDate().toLocaleDateString();
+    }
+
     return "";
   };
 
