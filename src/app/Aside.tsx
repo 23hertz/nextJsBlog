@@ -34,7 +34,7 @@ const Aside = () => {
   const randomTopics = getRandomTopics(allPosts, 5);
 
   // 🔹 Format Firestore date or string date
-  const formatDate = (date: any) => {
+  const formatDate = (date: Date) => {
     if (!date) return "";
     if (typeof date === "string") return new Date(date).toLocaleDateString();
     if (date instanceof Timestamp) return date.toDate().toLocaleDateString();

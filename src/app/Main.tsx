@@ -1,7 +1,6 @@
 "use client";
 import Topics from "./Topics";
 import Nav from "./Nav";
-import Search from "./Search";
 import Aside from "./Aside";
 import { useState } from "react";
 
