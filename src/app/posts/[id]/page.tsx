@@ -32,12 +32,6 @@ const PostPage = () => {
     fetchPost();
   }, [id]);
 
-  // const formatDate = (date: Date) => {
-  //   if (!date) return "";
-  //   if (typeof date === "string") return new Date(date).toLocaleDateString();
-  //   if ("toDate" in date) return date.toDate().toLocaleDateString();
-  //   return "";
-  // };
 
   const formatDate = (date: Timestamp | string | null | undefined) => {
     if (!date) return "";
@@ -58,8 +52,9 @@ const PostPage = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6 border rounded-lg bg-white shadow-md mt-6">
-      <h1 className="text-2xl font-bold mb-4">{post.content}</h1>
-      <p className="text-gray-700">By {post.creator}</p>
+      <h1 className="text-2xl font-bold mb-4">{post.subject}</h1>
+      <h1 className="text-md font-md mb-4 text-gray-900">{post.content}</h1>
+      <p className="text-gray-400">By {post.creator}</p>
       {post.date && (
         <p className="text-sm text-gray-500">
           Published: {formatDate(post.date)}
