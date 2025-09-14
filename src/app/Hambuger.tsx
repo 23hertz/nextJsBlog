@@ -6,11 +6,11 @@ type HamburgerProps = {
 
 const Hamburger = ({ onClick }: HamburgerProps) => {
   return (
-    <div className="space-y-1 cursor-pointer" onClick={onClick}>
+    <button className="space-y-1 cursor-pointer" onClick={onClick}>
       <span className="block h-0.5 w-4 animate-pulse bg-gray-600"></span>
       <span className="block h-0.5 w-4 animate-pulse bg-gray-600"></span>
       <span className="block h-0.5 w-4 animate-pulse bg-gray-600"></span>
-    </div>
+    </button>
   );
 };
 export default Hamburger;
