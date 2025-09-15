@@ -19,21 +19,15 @@ const Wrapper = () => {
       />
 
       <div className="flex min-h-screen">
-        {/* <div
+        <div
           className={`fixed lg:static top-0 left-0 h-full bg-white shadow-lg z-20 transform transition-transform duration-300 
           ${menuOpen ? "translate-x-0 w-[60%] mt-[110px]" : "-translate-x-full"} 
           lg:translate-x-0 lg:w-[15%] lg:mt-0`}
         >
           <Nav menuOpen={menuOpen} />
-        </div> */}
-
-        <div
-          className={`fixed lg:static top-[72px] lg:top-0 left-0 h-full bg-white shadow-lg z-20 transform transition-transform duration-300
-    ${menuOpen ? "translate-x-0 w-[60%]" : "-translate-x-full"} 
-    lg:translate-x-0 lg:w-[15%]`}
-        >
-          <Nav menuOpen={menuOpen} />
         </div>
+
+       
 
         <div className="flex-1 lg:w-[65%]">
           <Topics searchQuery={searchQuery} />
