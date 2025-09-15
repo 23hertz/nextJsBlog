@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
 import { db } from "@/lib/firebaseConfig";
 import { PostItemProps } from "@/types/IPost";
-import Search from "./Search";
+// import Search from "./Search";
 import Link from "next/link";
 import { Rubik_Bubbles } from "next/font/google";
 
@@ -72,7 +72,7 @@ const Topics = ({ searchQuery = "" }: TopicProps) => {
           {filteredPosts.map((post) => (
             <li
               key={post.id}
-              className="border border-gray-200 p-3 rounded-lg shadow-sm bg-white"
+              className="border-b-2 border-gray-200 p-3 rounded-lg  bg-white"
             >
               <Link href={`/posts/${post.id}`}>
                 <p className="{roboto} ">

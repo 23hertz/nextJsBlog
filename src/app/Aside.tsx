@@ -219,7 +219,7 @@ const Aside = () => {
           {randomPosts.map((post) => (
             <li
               key={post.id}
-              className="border border-gray-200 p-3 rounded-lg shadow-sm bg-white hover:bg-gray-50 transition"
+              className="p-3 rounded-lg shadow-sm bg-white hover:bg-gray-50 transition"
             >
               <Link href={`/posts/${post.id}`} className="block">
                 <p className="font-semibold">Creator: {post.creator}</p>
