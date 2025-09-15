@@ -51,7 +51,7 @@ const CreateTopic = () => {
 
   return (
     <div className="py-2 mx-auto">
-      <Header />
+      {/* <Header /> */}
     
 
       <div className="mb-4 px-4">
